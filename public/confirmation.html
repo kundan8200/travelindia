@@ -42,11 +42,18 @@
                 <p style="font-size:1.1rem; color:var(--gray); margin-top:1rem;">Thank you for your booking. Your ticket/voucher will be sent to your email.</p>
                 
                 <div style="background:#f8fafc; border:1px dashed var(--border); padding:2rem; border-radius:8px; margin:2rem 0; text-align:center;">
-                    <p style="margin-bottom:0.5rem; text-transform:uppercase; font-size:0.9rem; font-weight:bold; color:var(--gray);">Your Booking ID</p>
+                    <p style="margin-bottom:0.5rem; text-transform:uppercase; font-size:0.9rem; font-weight:bold; color:var(--gray);">Your Reservation Number</p>
                     <h2 id="bkg-id" style="font-size:2.5rem; color:var(--primary); margin:0;">BKG-XXXXXX</h2>
                 </div>
 
-                <p>Need to make changes or have questions?</p>
+                <!-- Booking Details Summary (Populated by JS) -->
+                <div id="booking-details-summary"></div>
+
+                <div style="margin-top:2rem; text-align:center;">
+                    <a href="javascript:window.print()" style="color:var(--primary); text-decoration:none; font-weight:600;"><i class="fa-solid fa-download"></i> Download E-Ticket / Receipt</a>
+                </div>
+
+                <p style="margin-top:2rem;">Need to make changes or have questions?</p>
                 <div style="margin-top:1.5rem;">
                     <a href="index.html" class="button button-border" style="margin-right:1rem;">Back to Home</a>
                     <a href="contact.html" class="button button-blue">Contact Support</a>

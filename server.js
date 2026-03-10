@@ -3,13 +3,37 @@ const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
+const validator = require('validator');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Security and Performance Middleware
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+            "script-src": ["'self'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
+            "img-src": ["'self'", "data:", "https://*"]
+        }
+    }
+}));
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    message: "Too many requests from this IP, please try again after 15 minutes"
+});
+app.use("/api/", limiter);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new sqlite3.Database('./database.db', (err) => {
@@ -27,7 +51,11 @@ const db = new sqlite3.Database('./database.db', (err) => {
 
 app.post('/api/signup', (req, res) => {
     const { name, email, password } = req.body;
+    
+    // Input Validation
     if (!name || !email || !password) return res.status(400).json({ error: "All fields are required" });
+    if (!validator.isEmail(email)) return res.status(400).json({ error: "Invalid email format" });
+    if (password.length < 6) return res.status(400).json({ error: "Password must be at least 6 characters" });
 
     bcrypt.hash(password, 10, (err, hash) => {
         if (err) return res.status(500).json({ error: "Error hashing password" });
@@ -41,6 +69,7 @@ app.post('/api/signup', (req, res) => {
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ error: "All fields are required" });
+    if (!validator.isEmail(email)) return res.status(400).json({ error: "Invalid email format" });
 
     db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, user) => {
         if (err) return res.status(500).json({ error: "Server error" });

@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Secure Checkout | TravelIndia</title>
-    <meta name="description" content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
+    <title>Secure Checkout | TravelIndia</title>
+    <meta name="description"
+        content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
     <meta name="keywords" content="secure checkout, payment, booking confirmation">
     <link rel="canonical" href="https://travelindia-demo.com/checkout.html">
     <meta name="robots" content="noindex, nofollow">
-    
+
     <meta property="og:title" content="Secure Checkout | TravelIndia">
-    <meta property="og:description" content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
+    <meta property="og:description"
+        content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
     <meta property="og:url" content="https://travelindia-demo.com/checkout.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TravelIndia">
     <meta property="og:locale" content="en_IN">
-    
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Secure Checkout | TravelIndia">
-    <meta name="twitter:description" content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
-    
+    <meta name="twitter:description"
+        content="Complete your booking securely using our 100% safe payment gateway. Reserve your trip easily.">
+
     <meta name="theme-color" content="#2563eb">
     <meta name="author" content="TravelIndia Team">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="container top-menu">
@@ -44,7 +49,7 @@
             <p class="align-center mb-4">Complete your details to confirm the booking</p>
 
             <div class="checkout-page-layout">
-                                <div class="item-box" style="padding:2rem; box-shadow:none; border:1px solid var(--border);">
+                <div class="item-box" style="padding:2rem; box-shadow:none; border:1px solid var(--border);">
                     <h2 style="margin-bottom:1.5rem;">Passenger / Guest Details</h2>
                     <form id="checkoutForm">
                         <div class="input-group mb-4">
@@ -57,29 +62,44 @@
                         </div>
                         <div class="input-group mb-4">
                             <label>Mobile Number</label>
-                            <input type="tel" id="phone" class="input-box" required placeholder="10 Digits" pattern="[0-9]{10}" title="Must contain exactly 10 digits">
-                            <small style="color:var(--gray); margin-top:0.25rem; display:block;">Required for booking updates.</small>
+                            <input type="tel" id="phone" class="input-box" required placeholder="10 Digits"
+                                pattern="[0-9]{10}" title="Must contain exactly 10 digits">
+                            <small style="color:var(--gray); margin-top:0.25rem; display:block;">Required for booking
+                                updates.</small>
                         </div>
                         <hr style="margin:2rem 0; border:none; border-top:1px solid var(--border);">
                         <h3>Payment Option</h3>
-                        <p style="color:var(--gray); margin-bottom:1.5rem;">For demo purposes, choose Pay at Property / Pay Before Journey</p>
-                        
-                        <div style="border:1px solid var(--border); padding:1rem; border-radius:8px; display:flex; gap:1rem; align-items:center;">
+                        <p style="color:var(--gray); margin-bottom:1.5rem;">For demo purposes, choose Pay at Property /
+                            Pay Before Journey</p>
+
+                        <div
+                            style="border:1px solid var(--border); padding:1rem; border-radius:8px; display:flex; gap:1rem; align-items:center;">
                             <input type="radio" name="payment" checked>
                             <strong>Pay Later (Cash / UPI)</strong>
                         </div>
-                        
-                        <button type="submit" class="button button-blue button-full" style="margin-top:2rem; font-size:1.1rem; padding:1rem;">Complete Booking</button>
+
+                        <div style="margin-top:1.5rem; display:flex; gap:0.5rem; align-items:flex-start;">
+                            <input type="checkbox" required id="terms" style="margin-top:0.3rem;">
+                            <label for="terms" style="font-size:0.9rem; color:var(--gray);">I agree to the <a href="#"
+                                    style="color:var(--primary);">Terms & Conditions</a> and cancelation policy of
+                                TravelIndia.</label>
+                        </div>
+
+                        <button type="submit" class="button button-blue button-full"
+                            style="margin-top:2rem; font-size:1.1rem; padding:1rem; display:flex; align-items:center; justify-content:center; gap:0.75rem;">
+                            <i class="fa-solid fa-check-circle"></i> Confirm & Complete Booking
+                        </button>
                     </form>
                 </div>
 
-                                <div>
+                <div>
                     <h2 style="margin-bottom:1.5rem;">Order Summary</h2>
                     <div id="orderSummaryBox" class="booking-summary">
-                                            </div>
-                    
+                    </div>
+
                     <div style="margin-top:1.5rem; text-align:center;">
-                        <p style="color:var(--gray); font-size:0.9rem;"><i class="fa-solid fa-lock" style="color:var(--secondary);"></i> 100% Secure Checkout</p>
+                        <p style="color:var(--gray); font-size:0.9rem;"><i class="fa-solid fa-lock"
+                                style="color:var(--secondary);"></i> 100% Secure Checkout</p>
                     </div>
                 </div>
             </div>
@@ -88,10 +108,14 @@
 
     <footer>
         <div class="container bottom-footer-layout">
-            <div class="footer-section"><a href="index.html" class="logo" style="color:white;"><i class="fa-solid fa-plane-departure"></i> TravelIndia</a></div>
-            <div class="footer-copyright"><p>&copy; 2026 TravelIndia. All rights reserved.</p></div>
+            <div class="footer-section"><a href="index.html" class="logo" style="color:white;"><i
+                        class="fa-solid fa-plane-departure"></i> TravelIndia</a></div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 TravelIndia. All rights reserved.</p>
+            </div>
         </div>
     </footer>
     <script src="js/main.js"></script>
 </body>
+
 </html>

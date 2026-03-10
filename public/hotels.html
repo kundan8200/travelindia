@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Premium Hotels | Best Deals Under ₹2000 | TravelIndia</title>
-    <meta name="description" content="Find the best premium hotels and luxury resorts. Compare prices, amenities, and reviews. Book cheap hotels online.">
-    <meta name="keywords" content="book hotels online, cheap hotels under 2000, 5 star hotels, luxury resorts, hotel booking offers, best hotels">
+    <meta name="description"
+        content="Find the best premium hotels and luxury resorts. Compare prices, amenities, and reviews. Book cheap hotels online.">
+    <meta name="keywords"
+        content="book hotels online, cheap hotels under 2000, 5 star hotels, luxury resorts, hotel booking offers, best hotels">
     <link rel="canonical" href="https://travelindia-demo.com/hotels.html">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:title" content="Book Premium Hotels | Best Deals Under ₹2000 | TravelIndia">
-    <meta property="og:description" content="Find the best premium hotels and luxury resorts. Compare prices, amenities, and reviews. Book cheap hotels online.">
+    <meta property="og:description"
+        content="Find the best premium hotels and luxury resorts. Compare prices, amenities, and reviews. Book cheap hotels online.">
     <meta property="og:url" content="https://travelindia-demo.com/hotels.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TravelIndia">
@@ -21,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="container top-menu">
@@ -44,8 +49,28 @@
                     <h3>Filter Results</h3>
                     <hr style="margin:1rem 0; border:none; border-top:1px solid var(--border);">
                     <div class="filter-group">
+                        <h4>Location</h4>
+                        <select id="locationFilter" class="input-box" style="width:100%;">
+                            <option value="">All Locations</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Varanasi">Varanasi</option>
+                            <option value="Andaman">Andaman</option>
+                            <option value="Ladakh">Ladakh</option>
+                            <option value="Shimla">Shimla</option>
+                            <option value="Manali">Manali</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Udaipur">Udaipur</option>
+                            <option value="Darjeeling">Darjeeling</option>
+                            <option value="Rishikesh">Rishikesh</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
                         <h4>Max Price: <span id="priceValue">₹10000</span></h4>
-                        <input type="range" id="priceFilter" min="1000" max="10000" step="500" value="10000" style="width:100%;">
+                        <input type="range" id="priceFilter" min="1000" max="10000" step="500" value="10000"
+                            style="width:100%;">
                     </div>
                     <div class="filter-group checkbox-list" id="starFilterGroup">
                         <h4>Star Rating</h4>
@@ -61,9 +86,10 @@
                     </div>
                 </aside>
                 <div class="items-list" id="hotelList" style="display:flex; flex-direction:column; gap:2rem;">
-                    <div class="item-box item-box-horizontal" data-price="4500" data-stars="5" style="flex-direction:row;">
+                    <div class="item-box item-box-horizontal" data-location="Mumbai" data-price="4500" data-stars="5"
+                        style="flex-direction:row;">
                         <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
-                            <img src="images/destinations/mumbai.jpg" alt="Taj Palace Mumbai" loading="lazy">
+                            <img src="images/hotels/mumbai_taj.png" alt="Taj Palace Mumbai" loading="lazy">
                         </a>
                         <div class="item-content">
                             <h2 class="item-heading">Taj Palace Resort</h2>
@@ -73,14 +99,77 @@
                             </div>
                             <p>Ultimate luxury with a scenic view and premium pool.</p>
                             <div class="item-box-footer" style="padding:0; border:none;">
-                                <div class="item-cost">₹4,500 <span style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span></div>
+                                <div class="item-cost">₹4,500 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
                                 <a href="hotel-detail.html" class="button button-blue">Book Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item-box item-box-horizontal" data-price="7500" data-stars="5" style="flex-direction:row;">
+                    <div class="item-box item-box-horizontal" data-location="Andaman" data-price="6200" data-stars="5"
+                        style="flex-direction:row;">
                         <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
-                            <img src="images/destinations/jaipur.jpg" alt="Royal Jaipur Palace" loading="lazy">
+                            <img src="images/hotels/andaman_havelock.png" alt="Havelock Sands Resort" loading="lazy">
+                        </a>
+                        <div class="item-content">
+                            <h2 class="item-heading">Havelock Sands Resort</h2>
+                            <div class="item-info">
+                                <span><i class="fa-solid fa-location-dot"></i> Andaman</span>
+                                <span><i class="fa-solid fa-star"></i> 5.0 Rating</span>
+                            </div>
+                            <p>Pristine white sand beach resort with private villas.</p>
+                            <div class="item-box-footer" style="padding:0; border:none;">
+                                <div class="item-cost">₹6,200 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
+                                <a href="hotel-detail.html" class="button button-blue">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box item-box-horizontal" data-location="Ladakh" data-price="3800" data-stars="4"
+                        style="flex-direction:row;">
+                        <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
+                            <img src="images/hotels/ladakh_highland.png" alt="Leh Highland Boutique" loading="lazy">
+                        </a>
+                        <div class="item-content">
+                            <h2 class="item-heading">The Grand Highland</h2>
+                            <div class="item-info">
+                                <span><i class="fa-solid fa-location-dot"></i> Ladakh</span>
+                                <span><i class="fa-solid fa-star"></i> 4.5 Rating</span>
+                            </div>
+                            <p>Experience the cold desert with premium heating and mountain views.</p>
+                            <div class="item-box-footer" style="padding:0; border:none;">
+                                <div class="item-cost">₹3,800 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
+                                <a href="hotel-detail.html" class="button button-blue">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box item-box-horizontal" data-location="Shimla" data-price="2500" data-stars="4"
+                        style="flex-direction:row;">
+                        <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
+                            <img src="images/hotels/shimla_pine.png" alt="Shimla Pine Woods" loading="lazy">
+                        </a>
+                        <div class="item-content">
+                            <h2 class="item-heading">Pine View Boutique Hotel</h2>
+                            <div class="item-info">
+                                <span><i class="fa-solid fa-location-dot"></i> Shimla</span>
+                                <span><i class="fa-solid fa-star"></i> 4.2 Rating</span>
+                            </div>
+                            <p>Located near Mall Road, offering scenic valley views.</p>
+                            <div class="item-box-footer" style="padding:0; border:none;">
+                                <div class="item-cost">₹2,500 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
+                                <a href="hotel-detail.html" class="button button-blue">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box item-box-horizontal" data-location="Jaipur" data-price="7500" data-stars="5"
+                        style="flex-direction:row;">
+                        <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
+                            <img src="images/hotels/jaipur_royal.png" alt="Royal Jaipur Palace" loading="lazy">
                         </a>
                         <div class="item-content">
                             <h2 class="item-heading">The Royal Heritage</h2>
@@ -90,14 +179,17 @@
                             </div>
                             <p>Live like a king in this heritage palace with royal services.</p>
                             <div class="item-box-footer" style="padding:0; border:none;">
-                                <div class="item-cost">₹7,500 <span style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span></div>
+                                <div class="item-cost">₹7,500 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
                                 <a href="hotel-detail.html" class="button button-blue">Book Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item-box item-box-horizontal" data-price="3200" data-stars="4" style="flex-direction:row;">
+                    <div class="item-box item-box-horizontal" data-location="Kerala" data-price="3200" data-stars="4"
+                        style="flex-direction:row;">
                         <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
-                            <img src="images/destinations/kerala.jpg" alt="Kerala Backwater Resort" loading="lazy">
+                            <img src="images/hotels/kerala_backwater.png" alt="Kerala Backwater Resort" loading="lazy">
                         </a>
                         <div class="item-content">
                             <h2 class="item-heading">Backwater Bliss</h2>
@@ -107,14 +199,17 @@
                             </div>
                             <p>Quiet resort by the backwaters with authentic Kerala spa.</p>
                             <div class="item-box-footer" style="padding:0; border:none;">
-                                <div class="item-cost">₹3,200 <span style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span></div>
+                                <div class="item-cost">₹3,200 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
                                 <a href="hotel-detail.html" class="button button-blue">Book Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item-box item-box-horizontal" data-price="1800" data-stars="3" style="flex-direction:row;">
+                    <div class="item-box item-box-horizontal" data-location="Goa" data-price="1800" data-stars="3"
+                        style="flex-direction:row;">
                         <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
-                            <img src="images/destinations/goa.jpg" alt="Budget Resort Goa" loading="lazy">
+                            <img src="images/hotels/goas_beach.png" alt="Budget Resort Goa" loading="lazy">
                         </a>
                         <div class="item-content">
                             <h2 class="item-heading">Goa Beach Retreat</h2>
@@ -124,14 +219,17 @@
                             </div>
                             <p>Beautiful budget stay, right on the beach front.</p>
                             <div class="item-box-footer" style="padding:0; border:none;">
-                                <div class="item-cost">₹1,800 <span style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span></div>
+                                <div class="item-cost">₹1,800 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
                                 <a href="hotel-detail.html" class="button button-blue">Book Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item-box item-box-horizontal" data-price="1200" data-stars="3" style="flex-direction:row;">
+                    <div class="item-box item-box-horizontal" data-location="Varanasi" data-price="1200" data-stars="3"
+                        style="flex-direction:row;">
                         <a href="hotel-detail.html" class="item-image" style="width:300px; height:auto; display:block;">
-                            <img src="images/destinations/varanasi.jpg" alt="Varanasi Ganga Inn" loading="lazy">
+                            <img src="images/hotels/varanasi_ganga.png" alt="Varanasi Ganga Inn" loading="lazy">
                         </a>
                         <div class="item-content">
                             <h2 class="item-heading">Ganga View Inn</h2>
@@ -141,7 +239,9 @@
                             </div>
                             <p>Affordable luxury at the heart of the spiritual city.</p>
                             <div class="item-box-footer" style="padding:0; border:none;">
-                                <div class="item-cost">₹1,200 <span style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span></div>
+                                <div class="item-cost">₹1,200 <span
+                                        style="font-size:0.8rem;color:var(--gray);font-weight:normal;">/night</span>
+                                </div>
                                 <a href="hotel-detail.html" class="button button-blue">Book Now</a>
                             </div>
                         </div>
@@ -149,15 +249,71 @@
                 </div>
             </div>
         </div>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Hotel",
+                "name": "Taj Palace Resort",
+                "description": "Ultimate luxury with a scenic view and premium pool.",
+                "image": "https://travelindia-demo.com/images/hotels/mumbai_taj.png",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Mumbai",
+                  "addressCountry": "IN"
+                },
+                "priceRange": "₹4,500"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Hotel",
+                "name": "The Royal Heritage",
+                "description": "Live like a king in this heritage palace with royal services.",
+                "image": "https://travelindia-demo.com/images/hotels/jaipur_royal.png",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Jaipur",
+                  "addressCountry": "IN"
+                },
+                "priceRange": "₹7,500"
+              }
+            }
+          ]
+        }
+        </script>
     </main>
     <footer>
         <div class="container bottom-footer-layout">
-            <div class="footer-section"><a href="index.html" class="logo" style="color:white;"><i class="fa-solid fa-plane-departure"></i> TravelIndia</a></div>
-            <div class="footer-section"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
-            <div class="footer-section"><h4>Services</h4><ul><li><a href="hotels.html">Hotels</a></li><li><a href="transport.html">Transport</a></li></ul></div>
+            <div class="footer-section"><a href="index.html" class="logo" style="color:white;"><i
+                        class="fa-solid fa-plane-departure"></i> TravelIndia</a></div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="transport.html">Transport</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-copyright"><p>&copy; 2026 TravelIndia. All rights reserved.</p></div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 TravelIndia. All rights reserved.</p>
+        </div>
     </footer>
     <script src="js/main.js"></script>
 </body>
+
 </html>

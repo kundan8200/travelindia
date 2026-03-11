@@ -1,4 +1,4 @@
-// --- Bus Seat Selection Logic ---
+
 let selectedSeats = [];
 let currentBusPrice = 0;
 let currentBusName = "";
@@ -48,7 +48,7 @@ window.confirmBusBooking = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
+
     const menuBtn = document.querySelector('.mobile-icon');
     const navMenu = document.querySelector('.menu-links');
     if (menuBtn && navMenu) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tab Switcher for Search Forms
+
     const tabBtns = document.querySelectorAll('.tab-button');
     const searchForms = document.querySelectorAll('.search-input-form');
     if (tabBtns.length > 0) {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hotel Filters
+
     const priceFilter = document.getElementById('priceFilter');
     const starFilters = document.querySelectorAll('.star-filter');
     const locationFilter = document.getElementById('locationFilter');
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize filters from last search if on hotels.html
+
     if (window.location.pathname.includes('hotels.html')) {
         const lastSearch = JSON.parse(localStorage.getItem('lastSearch'));
         if (lastSearch && lastSearch.type === 'hotel' && lastSearch.city) {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     starFilters.forEach(f => f.addEventListener('change', applyFilters));
 
-    // --- Search Form Submissions ---
+
     const hotelSearch = document.getElementById('hotel-search');
     if (hotelSearch) {
         hotelSearch.addEventListener('submit', (e) => {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Destination Specific Search Buttons ---
+
     document.querySelectorAll('.location-search-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const loc = btn.dataset.location;
@@ -180,21 +180,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Universal Booking Logic ---
+
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.button-blue, .button-book-now');
         if (!btn || btn.id === 'logoutBtn' || btn.id === 'chat-send' || btn.innerText.includes("Select Seats")) return;
 
-        // Ignore buttons that are part of a search form or auth forms
+
         if (btn.closest('#hotel-search, #bus-search, #cab-search, #signupForm, #loginForm')) return;
 
-        // Try to find a card/item box to get info
+
         const card = btn.closest('.item-box');
         if (!card) return;
 
-        e.preventDefault(); // Prevent default link or button behavior
+        e.preventDefault();
 
-        // Extract info from data attributes or falls back to text
+
         const type = btn.dataset.type || (window.location.pathname.includes('hotel') ? 'hotel' : 'transport');
         const name = btn.dataset.name || card.querySelector('.item-heading, h2')?.innerText || "Selection";
         const priceAttr = btn.dataset.price;
@@ -203,12 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (priceAttr) {
             price = priceAttr;
         } else {
-            const priceText = card.querySelector('.item-cost')?.innerText;
-            const priceMatch = priceText ? priceText.match(/₹([0-9,]+)/) : null;
-            price = priceMatch ? priceMatch[1].replace(',', '') : "0";
+            const priceText = card.querySelector('.item-cost, .price-tag, .cost')?.innerText;
+            const priceMatch = priceText ? priceText.match(/₹\s?([0-9,]+)/) : null;
+            price = priceMatch ? priceMatch[1].replace(',', '') : "2500";
         }
 
-        // Get selection details from last search if available
+
         const lastSearch = JSON.parse(localStorage.getItem('lastSearch')) || {};
         let route = "";
         if (type === 'hotel') route = lastSearch.city || "Various";
@@ -226,17 +226,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'checkout.html';
     });
 
-    // --- Checkout Page Summary ---
+
     const orderSummary = document.getElementById('orderSummaryBox');
     if (orderSummary) {
         const cart = JSON.parse(localStorage.getItem('bookingCart'));
         if (cart) {
             let rateHtml = cart.rate ? `<div class="summary-row"><span>KM Rate:</span><span>₹${cart.rate}/km</span></div>` : "";
             let seatsHtml = cart.seats ? `<div class="summary-row"><span>Seats:</span><strong>${cart.seats}</strong></div>` : "";
+            const isHotel = cart.type === 'hotel';
             orderSummary.innerHTML = `
                 <div class="summary-row"><span>Type:</span><strong>${cart.type.toUpperCase()}</strong></div>
-                <div class="summary-row"><span>Selection:</span><span>${cart.name}</span></div>
-                <div class="summary-row"><span>Route/Location:</span><span>${cart.route}</span></div>
+                <div class="summary-row"><span>${isHotel ? 'Hotel Name' : 'Selection'}:</span><span>${cart.name}</span></div>
+                <div class="summary-row"><span>${isHotel ? 'Location' : 'Route'}:</span><span>${cart.route}</span></div>
                 <div class="summary-row"><span>Date:</span><span>${cart.date}</span></div>
                 ${seatsHtml}
                 ${rateHtml}
@@ -247,13 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Final Booking Execution ---
+
     const checkoutForm = document.getElementById('checkoutForm');
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
             localStorage.setItem('lastBookingId', "BKG" + Math.floor(100000 + Math.random() * 900000));
-            // Keep current cart for confirmation details
+
             window.location.href = 'confirmation.html';
         });
     }
@@ -261,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('bkg-id')) {
         document.getElementById('bkg-id').innerText = localStorage.getItem('lastBookingId') || "BKG-123456";
 
-        // Show details on confirmation page
+
         const cart = JSON.parse(localStorage.getItem('bookingCart'));
         const detailsBox = document.getElementById('booking-details-summary');
         if (cart && detailsBox) {
@@ -278,12 +279,11 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // Clear cart after delay/showing
-        // localStorage.removeItem('bookingCart'); 
+
         localStorage.removeItem('lastSearch');
     }
 
-    // --- Auth Logic ---
+
     const signupForm = document.getElementById('signupForm');
     const loginForm = document.getElementById('loginForm');
     if (signupForm) {
@@ -332,12 +332,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // FAQ Accordion
+
     const faqs = document.querySelectorAll('.faq-title');
     faqs.forEach(faq => {
         faq.addEventListener('click', () => {
             const ans = faq.nextElementSibling;
             ans.style.display = (ans.style.display === 'block') ? 'none' : 'block';
         });
+    });
+
+
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.menu-links a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.style.color = 'var(--primary)';
+            link.style.fontWeight = '700';
+        }
+    });
+
+
+    document.querySelectorAll('.footer-copyright p').forEach(p => {
+        p.innerHTML = p.innerHTML.replace('2026', new Date().getFullYear());
     });
 });

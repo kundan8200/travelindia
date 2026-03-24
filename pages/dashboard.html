@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard & Bookings | TravelIndia</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body style="background:var(--light);">
+    <!-- Header -->
+    <header>
+        <div class="container top-menu">
+            <a href="../index.html" class="logo"><i class="fa-solid fa-plane-departure"></i> TravelIndia</a>
+            <button class="mobile-icon" aria-label="Toggle Navigation Menu"><i class="fa-solid fa-bars"></i></button>
+            <!-- Navigation -->
+            <nav class="menu-links">
+                <a href="../index.html">Home</a>
+                <a href="../destinations/destinations.html">Destinations</a>
+                <a href="../hotels/hotels.html">Hotels</a>
+                <a href="../transport/transport.html">Transport</a>
+                <div class="menu-buttons" id="authLinks"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+        <div class="container section">
+            <div style="background:#fff; border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(0,0,0,0.05); border:1px solid var(--border);">
+                <h2><i class="fa-solid fa-user-circle" style="color:var(--primary);"></i> My Profile</h2>
+                <hr style="margin:1rem 0; border:none; border-top:1px solid var(--border);">
+                <div id="userInfo" style="margin-bottom:2rem; font-size:1.1rem;">
+                    Loading user details...
+                </div>
+
+                <h2><i class="fa-solid fa-suitcase-rolling" style="color:var(--primary);"></i> My Past Bookings</h2>
+                <hr style="margin:1rem 0; border:none; border-top:1px solid var(--border);">
+                <div id="userBookingsList" style="display:flex; flex-direction:column; gap:1rem;">
+                    <div style="text-align:center; padding:2rem; color:var(--gray);"><i class="fa-solid fa-spinner fa-spin"></i> Loading bookings...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container bottom-footer-layout">
+            <div class="footer-section"><a href="../index.html" class="logo" style="color:white;"><i
+                        class="fa-solid fa-plane-departure"></i> TravelIndia</a></div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 TravelIndia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            document.getElementById('userInfo').innerHTML = `
+                <p style="margin-bottom:0.5rem;"><strong>Name:</strong> ${user.name}</p>
+                <p style="margin-bottom:0.5rem;"><strong>Email:</strong> ${user.email}</p>
+            `;
+
+            try {
+                const res = await fetch('/api/user/bookings?email=' + encodeURIComponent(user.email));
+                const data = await res.json();
+                
+                const bookingsBox = document.getElementById('userBookingsList');
+                if (res.ok && data.success) {
+                    if (data.bookings.length === 0) {
+                        bookingsBox.innerHTML = '<p style="color:var(--gray); padding:1rem;">You have no active bookings yet.</p>';
+                    } else {
+                        bookingsBox.innerHTML = data.bookings.map(b => `
+                            <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                                <div>
+                                    <div style="font-size:0.8rem; color:var(--gray); margin-bottom:0.25rem;">Booking ID: BKG${b.id} | ${new Date(b.booking_date).toLocaleString()}</div>
+                                    <h3 style="margin:0 0 0.5rem 0;">${b.item_name}</h3>
+                                    <p style="margin:0; font-size:0.9rem;"><strong>Type:</strong> ${b.item_type.toUpperCase()} | <strong>Payment:</strong> ${b.payment_method}</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div style="font-size:1.5rem; font-weight:bold; color:var(--dark);">₹${b.price}</div>
+                                    <span style="display:inline-block; margin-top:0.5rem; padding:0.25rem 0.75rem; background:#dcfce7; color:#15803d; border-radius:12px; font-size:0.8rem; font-weight:bold;">${b.payment_status}</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                } else {
+                    bookingsBox.innerHTML = '<p style="color:#b91c1c; padding:1rem;">Failed to load bookings.</p>';
+                }
+            } catch(e) {
+                document.getElementById('userBookingsList').innerHTML = '<p style="color:#b91c1c; padding:1rem;">Network error fetching bookings.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>

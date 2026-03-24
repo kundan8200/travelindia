@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | TravelIndia Bookings</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #f1f5f9; }
+        .admin-sidebar { width: 250px; background: #1e293b; color: white; min-height: 100vh; position: fixed; padding-top: 2rem; display: flex; flex-direction: column; }
+        .admin-sidebar .logo { color: white; font-size: 1.5rem; text-decoration: none; padding: 0 1.5rem 2rem 1.5rem; font-weight: 700; display: block; border-bottom: 1px solid #334155; margin-bottom: 1rem; }
+        .admin-sidebar a.menu-item { color: #cbd5e1; text-decoration: none; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; transition: 0.2s; }
+        .admin-sidebar a.menu-item:hover, .admin-sidebar a.menu-item.active { background: #3b82f6; color: white; }
+        
+        .admin-content { margin-left: 250px; padding: 2rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .stat-card h3 { color: #64748b; font-size: 0.9rem; text-transform: uppercase; margin: 0 0 0.5rem 0; }
+        .stat-card .value { font-size: 2rem; font-weight: 700; color: #0f172a; margin: 0; }
+        
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+        tr:last-child td { border-bottom: none; }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+        .status-paid { background: #dcfce7; color: #15803d; }
+        .status-pending { background: #fef08a; color: #854d0e; }
+    </style>
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+    <div class="admin-sidebar">
+        <a href="../index.html" class="logo"><i class="fa-solid fa-plane-departure"></i> TravelIndia</a>
+        <a href="#" class="menu-item active"><i class="fa-solid fa-chart-pie"></i> Bookings & Revenue</a>
+        <a href="../index.html" class="menu-item" style="margin-top:auto; background:#ef4444; color:white;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Admin Menu</a>
+    </div>
+
+    <div class="admin-content">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+            <h2>Admin Data & Payments Tracker</h2>
+            <div style="font-size:0.9rem; color:#64748b;"><i class="fa-solid fa-clock"></i> Live Updates Enabled</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <p class="value" id="totalRev">₹0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Bookings</h3>
+                <p class="value" id="totalBkg">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Successful Payments</h3>
+                <p class="value" id="totalPaid">0</p>
+            </div>
+        </div>
+
+        <div style="background:white; border-radius:8px; padding:1.5rem; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+            <h3 style="margin-top:0; margin-bottom:1rem; color:#1e293b;"><i class="fa-solid fa-money-check-dollar"></i> Customer Payments Record</h3>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID & Date</th>
+                            <th>Customer Info (Who Paid)</th>
+                            <th>Service Booked</th>
+                            <th>Amount (How Much)</th>
+                            <th>Payment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminBookingsTable">
+                        <tr><td colspan="5" style="text-align:center; padding:2rem; color:#64748b;"><i class="fa-solid fa-spinner fa-spin"></i> Loading backend records...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch('/api/admin/bookings');
+                const data = await res.json();
+                
+                if (res.ok && data.success) {
+                    const tbody = document.getElementById('adminBookingsTable');
+                    if (data.bookings.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:2rem;">No bookings found yet.</td></tr>';
+                        return;
+                    }
+                    
+                    let rev = 0;
+                    let paidCount = 0;
+                    
+                    tbody.innerHTML = data.bookings.map(b => {
+                        const amount = parseInt(b.price) || 0;
+                        if(b.payment_status === 'Paid' || b.payment_status === 'Approved') {
+                            rev += amount;
+                            paidCount++;
+                        }
+                        
+                        const statusClass = (b.payment_status === 'Paid') ? 'status-paid' : 'status-pending';
+                        
+                        return `
+                        <tr>
+                            <td>
+                                <strong>BKG${b.id}</strong><br>
+                                <span style="font-size:0.8rem; color:#64748b;">${new Date(b.booking_date).toLocaleDateString()}</span>
+                            </td>
+                            <td>
+                                <strong>${b.guest_name}</strong><br>
+                                <span style="font-size:0.85rem; color:#64748b;"><i class="fa-regular fa-envelope"></i> ${b.guest_email}</span><br>
+                                <span style="font-size:0.85rem; color:#64748b;"><i class="fa-solid fa-phone"></i> ${b.guest_phone || 'N/A'}</span>
+                            </td>
+                            <td>
+                                <span style="font-size:0.8rem; text-transform:uppercase; color:#3b82f6; font-weight:bold;">${b.item_type}</span><br>
+                                ${b.item_name}
+                            </td>
+                            <td style="font-weight:700; font-size:1.1rem; color:#0f172a;">
+                                ₹${b.price}
+                            </td>
+                            <td>
+                                <span class="status-badge ${statusClass}">${b.payment_status} via ${b.payment_method}</span>
+                            </td>
+                        </tr>
+                        `;
+                    }).join('');
+                    
+                    document.getElementById('totalRev').innerText = '₹' + rev.toLocaleString();
+                    document.getElementById('totalBkg').innerText = data.bookings.length;
+                    document.getElementById('totalPaid').innerText = paidCount;
+                    
+                } else {
+                    document.getElementById('adminBookingsTable').innerHTML = '<tr><td colspan="5" style="text-align:center; color:red;">Failed to retrieve active records.</td></tr>';
+                }
+            } catch(e) {
+                document.getElementById('adminBookingsTable').innerHTML = '<tr><td colspan="5" style="text-align:center; color:red;">Backend connection error. Ensure server is running.</td></tr>';
+            }
+        });
+    </script>
+</body>
+</html>

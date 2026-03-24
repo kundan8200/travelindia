@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Online - Hotels, Buses, Cabs | Premium Travel App</title>
+    <meta name="description"
+        content="Book your next trip with confidence. Best hotels, luxury buses, and fast cabs booking platform. Get started today.">
+    <meta name="keywords"
+        content="travel booking, online hotel booking, bus tickets, cab booking india, cheap flights, premium resorts, holiday packages">
+    <link rel="canonical" href="https://travelindia-demo.com/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <meta property="og:title" content="Booking Online - Hotels, Buses, Cabs | Premium Travel App">
+    <meta property="og:description"
+        content="Book your next trip with confidence. Best hotels, luxury buses, and fast cabs booking platform. Get started today.">
+    <meta property="og:url" content="https://travelindia-demo.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TravelIndia">
+    <meta property="og:locale" content="en_IN">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Booking Online - Hotels, Buses, Cabs | Premium Travel App">
+    <meta name="twitter:description"
+        content="Book your next trip with confidence. Best hotels, luxury buses, and fast cabs booking platform. Get started today.">
+
+    <meta name="theme-color" content="#2563eb">
+    <meta name="author" content="TravelIndia Team">
+    <link rel="preload" href="images/destinations/hero-bg.jpg" as="image" type="image/jpeg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+
+    <!-- Header -->
+    <header>
+        <div class="container top-menu">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i> TravelIndia
+            </a>
+            <button class="mobile-icon" aria-label="Toggle Navigation Menu"><i class="fa-solid fa-bars"></i></button>
+            <!-- Navigation -->
+            <nav class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="destinations/destinations.html">Destinations</a>
+                <a href="hotels/hotels.html">Hotels</a>
+                <a href="transport/transport.html">Transport</a>
+                <a href="pages/blog.html">Blog</a>
+                <a href="pages/about.html">About Us</a>
+                <a href="pages/contact.html">Contact</a>
+                <div class="menu-buttons" id="authLinks">
+                    <a href="login.html" class="button button-border">Login</a>
+                    <a href="signup.html" class="button button-blue">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+        <section class="main-banner">
+            <img src="images/destinations/hero-bg.jpg" alt="Beautiful travel destination view" class="main-banner-bg"
+                fetchpriority="high">
+            <div class="main-banner-content">
+                <h1>Explore the World With Us</h1>
+                <p>Find the best deals on <a href="hotels/hotels.html" style="color:#fff; text-decoration:underline;">luxury
+                        hotels</a>, <a href="destinations/goa.html" style="color:#fff; text-decoration:underline;">beaches in
+                        Goa</a>, and <a href="destinations/manali.html" style="color:#fff; text-decoration:underline;">mountain
+                        stays</a> across India.</p>
+            </div>
+        </section>
+
+        <div class="container search-box">
+            <div class="search-options">
+                <button class="tab-button active" data-target="hotel-search">🏨 Hotels</button>
+                <button class="tab-button" data-target="bus-search">🚌 Buses</button>
+                <button class="tab-button" data-target="cab-search">🚕 Cabs</button>
+            </div>
+
+            <datalist id="cities-list">
+                <option value="Delhi">
+                <option value="Mumbai">
+                <option value="Goa">
+                <option value="Manali">
+                <option value="Jaipur">
+                <option value="Agra">
+                <option value="Shimla">
+                <option value="Udaipur">
+                <option value="Varanasi">
+                <option value="Pune">
+                <option value="Bangalore">
+                <option value="Hyderabad">
+                <option value="Kolkata">
+                <option value="Leh">
+                <option value="Darjeeling">
+                <option value="Rishikesh">
+            </datalist>
+
+
+            <form id="hotel-search" class="search-input-form active">
+                <div class="input-group">
+                    <label>City or Destination</label>
+                    <input type="text" id="hotel-city" class="input-box" placeholder="E.g. Goa, Manali, Jaipur"
+                        list="cities-list" required>
+                </div>
+                <div class="input-group">
+                    <label>Check In</label>
+                    <input type="date" id="hotel-checkin" class="input-box" required>
+                </div>
+                <div class="input-group">
+                    <label>Check Out</label>
+                    <input type="date" id="hotel-checkout" class="input-box" required>
+                </div>
+                <div class="input-group">
+                    <label>Guests</label>
+                    <select id="hotel-guests" class="input-box">
+                        <option>1 Adult</option>
+                        <option selected>2 Adults</option>
+                        <option>Family (4+)</option>
+                    </select>
+                </div>
+                <button type="submit" class="button button-blue">Search Hotels</button>
+            </form>
+
+
+            <form id="bus-search" class="search-input-form">
+                <div class="input-group">
+                    <label>From</label>
+                    <input type="text" id="bus-from" class="input-box" placeholder="E.g. Delhi" list="cities-list"
+                        required>
+                </div>
+                <div class="input-group">
+                    <label>To</label>
+                    <input type="text" id="bus-to" class="input-box" placeholder="E.g. Manali" list="cities-list"
+                        required>
+                </div>
+                <div class="input-group">
+                    <label>Date of Journey</label>
+                    <input type="date" id="bus-date" class="input-box" required>
+                </div>
+                <button type="submit" class="button button-blue">Search Buses</button>
+            </form>
+            <form id="cab-search" class="search-input-form">
+                <div class="input-group">
+                    <label>Pick-up City</label>
+                    <input type="text" id="cab-from" class="input-box" placeholder="E.g. Mumbai" list="cities-list"
+                        required>
+                </div>
+                <div class="input-group">
+                    <label>Drop City</label>
+                    <input type="text" id="cab-to" class="input-box" placeholder="E.g. Pune" list="cities-list"
+                        required>
+                </div>
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" id="cab-date" class="input-box" required>
+                </div>
+                <div class="input-group">
+                    <label>Vehicle Type</label>
+                    <select id="cab-type" class="input-box">
+                        <option>Sedan (4 Seater)</option>
+                        <option selected>SUV (6 Seater)</option>
+                        <option>Hatchback</option>
+                    </select>
+                </div>
+                <button type="submit" class="button button-blue">Search Cabs</button>
+            </form>
+        </div>
+
+        <section class="section container">
+            <h2 class="align-center">Top Destinations</h2>
+            <p class="align-center mb-4">Discover the most visited places this season</p>
+            <div class="grid" style="margin-top:2rem;">
+                <a href="destinations/goa.html" class="item-box">
+                    <div class="item-image">
+                        <img src="images/destinations/goa.jpg" alt="Beautiful beach in Goa" loading="lazy">
+                        <span class="item-badge">Trending</span>
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-heading">Goa</h3>
+                        <p>Beaches, Nightlife, and Seafood.</p>
+                        <div class="item-info"><span><i class="fa-solid fa-star"></i> 4.8/5</span></div>
+                    </div>
+                </a>
+                <a href="destinations/manali.html" class="item-box">
+                    <div class="item-image">
+                        <img src="images/destinations/manali.jpg" alt="Snow mountains in Manali" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-heading">Manali</h3>
+                        <p>Snow-capped mountains & adventure.</p>
+                        <div class="item-info"><span><i class="fa-solid fa-star"></i> 4.9/5</span></div>
+                    </div>
+                </a>
+                <a href="destinations/jaipur.html" class="item-box">
+                    <div class="item-image">
+                        <img src="images/destinations/jaipur.png" alt="Hawa Mahal Jaipur view" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-heading">Jaipur</h3>
+                        <p>The Pink City, Forts & Culture.</p>
+                        <div class="item-info"><span><i class="fa-solid fa-star"></i> 4.7/5</span></div>
+                    </div>
+                </a>
+                <a href="destinations/kerala.html" class="item-box">
+                    <div class="item-image">
+                        <img src="images/destinations/kerala.jpg" alt="Backwaters of Kerala" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-heading">Kerala</h3>
+                        <p>God's Own Country & Backwaters.</p>
+                        <div class="item-info"><span><i class="fa-solid fa-star"></i> 4.9/5</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="align-center" style="margin-top:2rem;">
+                <a href="destinations/destinations.html" class="button button-border">Explore All Destinations</a>
+            </div>
+        </section>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "Why book through TravelIndia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer the best deals with zero hidden charges, ensuring premium service."
+            }
+          }]
+        }
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container bottom-footer-layout">
+            <div class="footer-section">
+                <a href="index.html" class="logo" style="color:white; margin-bottom:1rem; display:block;">
+                    <i class="fa-solid fa-plane-departure"></i> TravelIndia
+                </a>
+                <p>Your premium travel partner in India. Experience affordable luxury.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="pages/about.html">About Us</a></li>
+                    <li><a href="pages/contact.html">Contact Us</a></li>
+                    <li><a href="pages/blog.html">Blog</a></li>
+                    <li><a href="pages/privacy.html">Privacy Policy</a></li>
+                    <li><a href="pages/terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="hotels/hotels.html">Hotel Bookings</a></li>
+                    <li><a href="transport/transport.html">Bus & Cabs</a></li>
+                    <li><a href="destinations/destinations.html">Holiday Packages</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 TravelIndia. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

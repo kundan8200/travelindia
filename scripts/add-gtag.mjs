@@ -3,9 +3,18 @@ import path from "node:path";
 
 const ROOT = path.resolve(process.cwd());
 const GA_MEASUREMENT_ID = "G-1H3ZTB5WKP";
-
 const HTML_EXTS = new Set([".html", ".htm"]);
 const SKIP_DIRS = new Set(["node_modules", ".git"]);
+
+const officialSnippet = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${GA_MEASUREMENT_ID}');
+</script>`;
 
 function shouldSkipDir(dirName) {
   return SKIP_DIRS.has(dirName);
@@ -18,56 +27,36 @@ async function* walk(dir) {
     if (ent.isDirectory()) {
       if (shouldSkipDir(ent.name)) continue;
       yield* walk(p);
-    } else if (ent.isFile()) {
-      const ext = path.extname(ent.name).toLowerCase();
-      if (HTML_EXTS.has(ext)) yield p;
+    } else if (ent.isFile() && HTML_EXTS.has(path.extname(ent.name).toLowerCase())) {
+      yield p;
     }
   }
 }
 
-function relGtagSrc(filePath) {
-  const relDir = path.relative(ROOT, path.dirname(filePath));
-  const depth = relDir === "" ? 0 : relDir.split(path.sep).length;
-  return `${"../".repeat(depth)}js/gtag.js`;
+function normalizeExistingGa(html) {
+  return html
+    .replace(/\s*<script[^>]+src=["'][^"']*js\/gtag\.js["'][^>]*><\/script>\s*/gi, "\n")
+    .replace(/\s*<!-- Google tag \(gtag\.js\) -->\s*<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-1H3ZTB5WKP"><\/script>\s*<script>[\s\S]*?gtag\('config', 'G-1H3ZTB5WKP'\);\s*<\/script>\s*/gi, "\n");
 }
 
-function alreadyHasGa(html) {
-  return (
-    html.includes("googletagmanager.com/gtag/js?id=") ||
-    html.includes(GA_MEASUREMENT_ID) ||
-    /<script[^>]+src=["'][^"']*js\/gtag\.js["']/i.test(html)
-  );
-}
-
-function injectIntoHead(html, src) {
-  const snippet = `<script src="${src}"></script>`;
+function injectIntoHead(html) {
+  const cleaned = normalizeExistingGa(html);
   const headClose = /<\/head\s*>/i;
-  if (!headClose.test(html)) return null;
-  return html.replace(headClose, `    ${snippet}\n</head>`);
+  if (!headClose.test(cleaned)) return null;
+  return cleaned.replace(headClose, `${officialSnippet}\n</head>`);
 }
 
 let changed = 0;
 let scanned = 0;
-const changedFiles = [];
 
 for await (const filePath of walk(ROOT)) {
   scanned++;
   const original = await fs.readFile(filePath, "utf8");
-
-  if (alreadyHasGa(original)) continue;
-
-  const src = relGtagSrc(filePath);
-  const updated = injectIntoHead(original, src);
+  const updated = injectIntoHead(original);
   if (!updated || updated === original) continue;
-
   await fs.writeFile(filePath, updated, "utf8");
   changed++;
-  changedFiles.push(path.relative(ROOT, filePath));
 }
 
 console.log(`Scanned: ${scanned}`);
 console.log(`Updated: ${changed}`);
-if (changedFiles.length) {
-  console.log("Files updated:");
-  for (const f of changedFiles) console.log(`- ${f}`);
-}

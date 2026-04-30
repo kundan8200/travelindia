@@ -1,79 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://travelindia-demo.com/index.html</loc>
+    <loc>https://travelindia-demo.com/404.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/agra.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/andaman.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/darjeeling.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/destinations.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/goa.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/jaipur.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/kerala.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/ladakh.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/manali.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/rishikesh.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/shimla.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/udaipur.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/destinations/varanasi.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-agra-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-agra-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-andaman-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-andaman-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-darjeeling-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-darjeeling-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-delhi-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-delhi-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-detail.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-goa-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-goa-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-jaipur-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-jaipur-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-kerala-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-kerala-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-ladakh-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-ladakh-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-manali-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-manali-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-mumbai-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-mumbai-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-rishikesh-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-rishikesh-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-shimla-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-shimla-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-udaipur-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-udaipur-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-varanasi-boutique.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotel-varanasi-premium.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/hotels/hotels.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/about.html</loc>
+    <loc>https://travelindia-demo.com/login.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/pages/about.html</loc>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/contact.html</loc>
+    <loc>https://travelindia-demo.com/pages/admin.html</loc>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/blog.html</loc>
-    <priority>0.70</priority>
+    <loc>https://travelindia-demo.com/pages/blog.html</loc>
+    <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/destinations.html</loc>
-    <priority>0.80</priority>
+    <loc>https://travelindia-demo.com/pages/checkout.html</loc>
+    <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/hotels.html</loc>
-    <priority>0.80</priority>
+    <loc>https://travelindia-demo.com/pages/confirmation.html</loc>
+    <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/transport.html</loc>
-    <priority>0.70</priority>
+    <loc>https://travelindia-demo.com/pages/contact.html</loc>
+    <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/agra.html</loc>
+    <loc>https://travelindia-demo.com/pages/dashboard.html</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/pages/privacy.html</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/pages/terms.html</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://travelindia-demo.com/signup.html</loc>
     <priority>0.60</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/andaman.html</loc>
+    <loc>https://travelindia-demo.com/transport/route-detail.html</loc>
     <priority>0.60</priority>
   </url>
   <url>
-    <loc>https://travelindia-demo.com/darjeeling.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/goa.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/jaipur.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/kerala.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/ladakh.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/manali.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/rishikesh.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/shimla.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/udaipur.html</loc>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://travelindia-demo.com/varanasi.html</loc>
+    <loc>https://travelindia-demo.com/transport/transport.html</loc>
     <priority>0.60</priority>
   </url>
 </urlset>
